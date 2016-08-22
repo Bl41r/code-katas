@@ -103,10 +103,10 @@ def proper_parenthetics(input):
     ll = LinkedList(l[::-1])
 
     while True:
-        if ll.head.data == ')':
-            return -1
         if ll.length == 0:
             return 0
+        if ll.head.data == ')':
+            return -1
         if ll.search('(') is None:
             return -1
         if ll.search(')') is None:
