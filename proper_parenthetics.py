@@ -96,19 +96,13 @@ class LinkedList(object):
 def proper_parenthetics(input):
     """Return 1 if string is open,-1 if closed, and 0 if balanced."""
     l = []
-    for i, char in enumerate(input):
+    for char in input:
         if char == ')' or char == '(':
             l.append(char)
-    print('l: ', l)
+
     ll = LinkedList(l[::-1])
-    print('ll: ', ll)
 
-    if len(l) < 1:  # handles empty list case --technically balanced
-        return 0
-
-    i = 0
-    while i < 1000:
-        i += 1
+    while True:
         if ll.head.data == ')':
             return -1
         if ll.length == 0:
