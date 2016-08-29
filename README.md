@@ -24,3 +24,10 @@ series_sum(5)
 - Round the answer up to 2 decimal places and return it as String.
 - If the given value is 0 then it should return 0.00
 - Will only be given Natural Numbers as arguments.
+
+### Sort_Cards
+- Sorts an array of cards like ['5','6','A','K'] to ['A','5','6','K']
+```
+%run sort_cards.py
+sort_cards(list('54TQKJ69327A8'))
+```
