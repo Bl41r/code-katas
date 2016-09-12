@@ -1,9 +1,10 @@
 import json
 from simple_graph import Node, SimpleGraph
-from simple_graph import spt_Dijkstra
+from simple_graph import spt_Dijkstra, spt_AStar
 
 
 def extract_data_from_json(file):
+    """Extract only the needed data from json file."""
     with open(file) as json_data:
         data = json.load(json_data)
     new_data = []
@@ -17,6 +18,7 @@ def extract_data_from_json(file):
 
 
 def build_graph(new_data):
+    """Build a graph from the data."""
     gr = SimpleGraph()
 
     for city in new_data:
@@ -97,3 +99,5 @@ if __name__ == "__main__":
     data = extract_data_from_json('cities_with_airports.json')
     gr = build_graph(data)
     print(depth_first_search(gr, gr.node_dict['Denver'], gr.node_dict['Honolulu']))
+    print('Dijkstra distance:', spt_Dijkstra(gr, 'Denver', 'Honolulu'))
+    print('AStar distance:', spt_AStar(gr, 'Denver', 'Honolulu'))
