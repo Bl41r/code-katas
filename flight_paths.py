@@ -92,3 +92,8 @@ def calculate_distance(point1, point2):
     a = math.sin(0.5 * delta_phi)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(0.5 * delta_lam)**2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return radius_earth * c / 1.60934   # convert km to miles
+
+if __name__ == "__main__":
+    data = extract_data_from_json('cities_with_airports.json')
+    gr = build_graph(data)
+    print(depth_first_search(gr, gr.node_dict['Denver'], gr.node_dict['Honolulu']))

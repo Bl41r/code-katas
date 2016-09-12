@@ -9,7 +9,6 @@ This branch features two shortest path algorithms, spt_Dijkstra and ________.
 """
 
 import sys
-import math
 import timeit
 
 
@@ -235,7 +234,7 @@ def spt_Dijkstra(graph, start_node_name, end_node_name):
     distances[curr_node.name] = 0
 
     while curr_node is not None:
-        print('distances:', distances)
+        #print('distances:', distances)
         tmp = []
         for n in graph.neighbors(curr_node):
             if n not in visited_set:
@@ -243,7 +242,7 @@ def spt_Dijkstra(graph, start_node_name, end_node_name):
             distances[n[0]] = min(distances[n[0]], distances[curr_node.name] + graph.weight(curr_node, graph.node_dict[n[0]]))
         visited_set.add(curr_node.name)
         curr_node = graph.node_dict[shortest_path(graph, distances, visited_set)]
-        print('curr node now is:', curr_node.name)
+        #print('curr node now is:', curr_node.name)
 
         if curr_node is not None:
             if curr_node.name == end_node_name:
@@ -264,7 +263,7 @@ def spt_AStar(graph, start_node_name, end_node_name):
     distances[curr_node.name] = 0
 
     while curr_node is not None:
-        print('distances:', distances)
+        #print('distances:', distances)
         tmp = []
         for n in graph.neighbors(curr_node):
             if n not in visited_set:
@@ -272,7 +271,7 @@ def spt_AStar(graph, start_node_name, end_node_name):
             distances[n[0]] = min(distances[n[0]], distances[curr_node.name] + graph.weight(curr_node, graph.node_dict[n[0]]))
         visited_set.add(curr_node.name)
         curr_node = graph.node_dict[shortest_path(graph, distances, visited_set, True)]
-        print('curr node now is:', curr_node.name)
+        #print('curr node now is:', curr_node.name)
 
         if curr_node is not None:
             if curr_node.name == end_node_name:
