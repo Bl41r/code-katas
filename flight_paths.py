@@ -20,7 +20,12 @@ def build_graph(new_data):
     gr = SimpleGraph()
 
     for city in new_data:
-        n = Node(city['city'], city['lat-lon'])
+        try:
+            n = Node(city['city'], city['lat-lon'])
+        except TypeError:
+            weird_name = city['city']
+            weird_name = weird_name.encode('ascii', 'ignore')
+            n = Node(weird_name, city['lat-lon'])
         try:
             gr.add_node(n)
         except KeyError:
