@@ -34,7 +34,7 @@ def test_depth_first_search():
 
 
 def test_spt_Dijkstra():
-    """Test distance found."""
+    """Test distance found.  Denver to Honolulu is direct."""
     from flight_paths import build_graph
     from flight_paths import extract_data_from_json
     from simple_graph import spt_Dijkstra
