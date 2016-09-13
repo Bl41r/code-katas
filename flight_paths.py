@@ -1,7 +1,7 @@
+from __future__ import unicode_literals
 import json
 from simple_graph import Node, SimpleGraph
 from simple_graph import spt_Dijkstra, spt_AStar
-
 
 def extract_data_from_json(file):
     """Extract only the needed data from json file."""
@@ -14,7 +14,18 @@ def extract_data_from_json(file):
         entry['neighbors'] = d['destination_cities']
         entry['lat-lon'] = d['lat_lon']
         new_data.append(entry)
+        new_data = remove_duplicates(new_data)
     return new_data
+
+
+def remove_duplicates(new_data):
+    in_list = []
+    ret_list = []
+    for n in new_data:
+        if n['city'] not in in_list:
+            in_list.append(n['city'])
+            ret_list.append(n)
+    return ret_list
 
 
 def build_graph(new_data):
@@ -22,12 +33,7 @@ def build_graph(new_data):
     gr = SimpleGraph()
 
     for city in new_data:
-        try:
-            n = Node(city['city'], city['lat-lon'])
-        except TypeError:
-            weird_name = city['city']
-            weird_name = weird_name.encode('ascii', 'ignore')
-            n = Node(weird_name, city['lat-lon'])
+        n = Node(city['city'], city['lat-lon'])
         try:
             gr.add_node(n)
         except KeyError:
@@ -84,7 +90,7 @@ def calculate_distance(point1, point2):
     def convert_to_radians(degrees):
         return degrees * math.pi / 180
 
-    radius_earth = 6.371E3 # km
+    radius_earth = 6.371E3      # km
     phi1 = convert_to_radians(point1[0])
     phi2 = convert_to_radians(point2[0])
 

@@ -5,9 +5,9 @@ Simple edge-weighted graph data type which contains a dict of nodes.  Nodes are 
 class, which makes them adaptable for additional attributes to be added.
 In this implementation, weight is a positive integer directional edge.
 
-This branch features two shortest path algorithms, spt_Dijkstra and ________.
+This branch features two shortest path algorithms, spt_Dijkstra and spt_AStar.
 """
-
+from __future__ import unicode_literals
 import sys
 import timeit
 
@@ -121,9 +121,9 @@ class SimpleGraph(object):
         return node_in_graph
 
     def neighbors(self, n):
-        """Return the list of all nodes ‘n’ is connected to
+        """Return the list of all nodes ‘n’ is connected to.
 
-        by edges and weight of edge.  Raises an error if n is not in g.
+        Connected by edge with weight.  Raises an error if n is not in g.
         """
         try:
             node_list = self.node_dict[n.name].neighbors
