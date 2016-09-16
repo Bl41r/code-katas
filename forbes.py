@@ -1,3 +1,11 @@
+"""Forbes top 40.
+
+This savory chunk of code takes a provided json file, namely
+forbes_billionaires.json, and returns the oldest dude on the list under
+the age of 80, and the youngest member of the list.  There are a few
+'errors' in the json file, so only valid ages are considered.
+"""
+
 import json
 
 
@@ -22,8 +30,13 @@ def oldrich_and_youngest(filename):
             raise KeyError('There was a problem the data.')
     print(return_dict)
 
-    return ((return_dict['oldest']['name'], return_dict['oldest']['net_worth (USD)'], return_dict['oldest']['source']),
-            (return_dict['youngest']['name'], return_dict['youngest']['net_worth (USD)'], return_dict['youngest']['source']))
+    return ((return_dict['oldest']['name'],
+            return_dict['oldest']['net_worth (USD)'],
+            return_dict['oldest']['source']),
+
+            (return_dict['youngest']['name'],
+                return_dict['youngest']['net_worth (USD)'],
+                return_dict['youngest']['source']))
 
 
 if __name__ == '__main__':  # pragma: no cover
