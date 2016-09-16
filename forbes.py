@@ -12,7 +12,7 @@ def oldrich_and_youngest(filename):
     for entry in data:
         if entry['age'] < 1 or entry['age'] > 79:
             continue
-        if entry['age'] > return_dict['oldest']['age'] and entry['net_worth (USD)'] > return_dict['oldest']['net_worth (USD)']:
+        if entry['age'] > return_dict['oldest']['age']:
             return_dict['oldest'] = entry
         if entry['age'] < return_dict['youngest']['age']:
             return_dict['youngest'] = entry
