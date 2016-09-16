@@ -16,11 +16,10 @@ def oldrich_and_youngest(filename):
             return_dict['oldest'] = entry
         if entry['age'] < return_dict['youngest']['age']:
             return_dict['youngest'] = entry
-    print(((return_dict['oldest']['name'], return_dict['oldest']['net_worth (USD)'], return_dict['oldest']['source']),
-            (return_dict['youngest']['name'], return_dict['youngest']['net_worth (USD)'], return_dict['youngest']['source'])))
+
     return ((return_dict['oldest']['name'], return_dict['oldest']['net_worth (USD)'], return_dict['oldest']['source']),
             (return_dict['youngest']['name'], return_dict['youngest']['net_worth (USD)'], return_dict['youngest']['source']))
 
 
 if __name__ == '__main__':  # pragma: no cover
-    oldrich_and_youngest('forbes_billionaires_2016.json')
+    print(oldrich_and_youngest('forbes_billionaires_2016.json'))
