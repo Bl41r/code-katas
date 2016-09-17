@@ -14,8 +14,8 @@ def oldrich_and_youngest(filename):
     with open(filename) as json_data:
         data = json.load(json_data)
 
-    init_dict_o = {'net_worth (USD)': 0, 'age': 0}
-    init_dict_y = {'net_worth (USD)': 0, 'age': 80}
+    init_dict_o = {'name': 'init', 'net_worth (USD)': 0, 'age': 0}
+    init_dict_y = {'name': 'init', 'net_worth (USD)': 0, 'age': 80}
     return_dict = {'oldest': init_dict_o, 'youngest': init_dict_y}
 
     for entry in data:
