@@ -14,11 +14,15 @@ class AutoCompleter():
             self.max_completions = int(max_completions)
         except ValueError:
             raise TypeError('max_completions must be an int type.')
+
         if isinstance(word_list, list):
             self.word_list = word_list
         else:
-            with open(word_list, 'r') as f:
-                self.word_list = f.read().split()
+            try:
+                with open(word_list, 'r') as f:
+                    self.word_list = f.read().split()
+            except IOError:
+                raise TypeError('word_list must be either a list or a valid filename.')
 
         self.trie = Trie()
         for word in self.word_list:
