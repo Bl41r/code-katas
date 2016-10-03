@@ -17,3 +17,6 @@ usage in ipython:
 >>> complete_me('finally')
 []
 ```
+
+* Alternatively, instead of passing vocabulary as a list, it may also be a file
+containing words.
