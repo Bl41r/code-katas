@@ -1,9 +1,15 @@
-"""Implement Trie data structure."""
+"""Implement Trie data structure.
+
+modified from:
+https://github.com/welliam/data-structures/tree/trie-traversal
+"""
 
 
 class Trie(object):
     """Trie data structure."""
+
     def __init__(self):
+        """Initialize with an empty dict."""
         self.words = {}
 
     def contains(self, s):
