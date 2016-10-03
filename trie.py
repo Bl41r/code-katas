@@ -24,7 +24,7 @@ class Trie(object):
             words = words.setdefault(c, {})
         words['$'] = True
 
-    def traverse(self, start_word):
+    def traverse(self, start_word, num_results):
         """Traverse the trie depth-first (pre order)."""
         words = self.words
         autocomplete_words = []
@@ -33,13 +33,14 @@ class Trie(object):
             words = words[c]
 
         stack = [(words, '')]
-        while len(stack):
+
+        i = 0
+        while len(stack) and i < num_results:
             d, word = stack.pop()
             if '$' in d:
                 autocomplete_words.append(start_word + word)
-                print(start_word + word)
+                i += 1
             for c in d:
                 if c != '$':
                     stack.append((d[c], word + c))
-
         return autocomplete_words

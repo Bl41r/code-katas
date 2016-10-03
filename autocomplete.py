@@ -10,12 +10,18 @@ class AutoCompleter():
 
     def __init__(self, word_list, max_completions=5):
         """Initialize the class with a dictionary."""
-        self.max_completions = max_completions
+        try:
+            self.max_completions = int(max_completions)
+        except ValueError:
+            raise TypeError('max_completions must be an int type.')
         self.word_list = word_list
         self.trie = Trie()
-        for word in self.wordlist:
-            self.trie.insert(word)
+        for word in self.word_list:
+            try:
+                self.trie.insert(word)
+            except TypeError:
+                raise TypeError('List contains non-string objects.')
 
     def __call__(self, word):
         """Return a list of matches that will complete word."""
-        return self.trie.traverse(word)
+        return self.trie.traverse(word, self.max_completions)
