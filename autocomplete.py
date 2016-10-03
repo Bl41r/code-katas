@@ -21,6 +21,7 @@ class AutoCompleter():
             try:
                 with open(word_list, 'r') as f:
                     self.word_list = f.read().split()
+                    self.word_list = list(set(self.word_list))
             except IOError:
                 raise TypeError('word_list must be either a list or a valid filename.')
 
